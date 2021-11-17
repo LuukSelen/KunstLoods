@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
 import 'favoriet.dart';
+import 'Camera.dart';
 import 'package:project_c/widgets/navbar.dart';
 class home extends StatefulWidget {
   const home({Key? key}) : super(key: key);
