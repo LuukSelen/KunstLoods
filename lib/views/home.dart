@@ -1,8 +1,10 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
 import 'favoriet.dart';
-import 'Camera.dart';
 import 'package:project_c/widgets/navbar.dart';
+import 'package:image_picker/image_picker.dart';
+import 'dart:io';
+import 'package:flutter/material.dart';
 class home extends StatefulWidget {
   const home({Key? key}) : super(key: key);
 
@@ -11,7 +13,21 @@ class home extends StatefulWidget {
 }
 
 class _homeState extends State<home> {
+  _selectTab() {
+    Navigator.pushNamed(context, '/camera');
 
+  }
+  File? imageFile;
+  void _getFromCamera() async {
+    XFile? pickedFile = await ImagePicker().pickImage(
+      source: ImageSource.camera,
+      maxHeight: 1080,
+      maxWidth: 1080,
+    );
+    setState(() {
+      imageFile = File(pickedFile!.path);
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +42,7 @@ class _homeState extends State<home> {
           child: Column(
 
             mainAxisAlignment: MainAxisAlignment.start  ,
-            children: const <Widget>[
+            children:  <Widget>[
               Image(
                   image: AssetImage('assets/logo.png')
               ),
@@ -39,7 +55,7 @@ class _homeState extends State<home> {
               ),
               FloatingActionButton.extended(
                 elevation: 5,
-                onPressed: null,
+                onPressed: () => _getFromCamera(),
                 label:Text('Scan een object'),
                 icon: Icon(Icons.add_a_photo ),
               ),
