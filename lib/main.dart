@@ -4,10 +4,17 @@ import 'views/galerij.dart';
 import 'views/tour.dart';
 import 'views/favoriet.dart';
 import 'views/home.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_database/firebase_database.dart';
+import 'dart:math';
 
 
 
-void main() {
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+
   runApp(
     MaterialApp(
         title: 'Cavero Loods Tour',
