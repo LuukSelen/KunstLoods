@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
+import 'package:project_c/main.dart';
 import 'favoriet.dart';
 import 'package:project_c/widgets/navbar.dart';
 import 'package:image_picker/image_picker.dart';
@@ -51,9 +52,18 @@ class _homeState extends State<home> {
                 child: Text(
                   'Welkom bij de Cavero Loods tour. Op onze locaties zijn er meerde plekken die interessant kunnen zijn. Wilt u kijken of er meer informatie is over een bepaalde plek? Dan kunt u gebruik maken van de camera om een scan te maken. Als er een match is zult u meer informatie krijgen.\n\n\n\n\n\n\n\nBegin met scannen door op de onderstaande knop te klikken.\n',
                   textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Colors.grey,
+                      fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
               FloatingActionButton.extended(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(0),
+                ),
+                foregroundColor: Colors.black,
+                backgroundColor: colorCustombutton,
                 elevation: 5,
                 onPressed: () => _getFromCamera(),
                 label:Text('Scan een object'),
