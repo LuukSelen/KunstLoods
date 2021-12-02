@@ -2,6 +2,7 @@
 import 'dart:math';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:project_c/widgets/imageholder.dart';
 import 'package:project_c/widgets/navbar.dart';
 
 class galerij extends StatefulWidget {
@@ -14,39 +15,35 @@ class galerij extends StatefulWidget {
 class _galerijState extends State<galerij> {
   int _counter = 0;
   final database = FirebaseDatabase.instance.reference();
+  final List<String> artworkname = <String>['Mooi Kunstwerk', 'Mona Lisa','Realiteit'];
+  final List<String> artworkadress = <String>['assets/sample_art.jpg','assets/monalisa.jpeg','assets/vrouw.jpg'];
+  final List<String> artworkdesc = <String>['Hier komt de informatie over de prachtige kunstwerken.','De Mona Lisa! Te vinden in Parijs.','Wanneer het even te veel wordt'];
+
 
   @override
   Widget build(BuildContext context) {
+    final namemap= artworkname.asMap();
+    final adressmap= artworkadress.asMap();
+    final descmap= artworkdesc.asMap();
+    int count= artworkname.length;
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
 
-        title: Text('galerij'),
+        title: Text('Cavero Loods Tour'),
+      ) ,
+      body: GridView.count(
+          childAspectRatio: 3/2,
+          crossAxisCount: 1,
+          mainAxisSpacing: 1,
+          children:
+            List.generate(count, (index){
+              return Center(
+                child: imageholder(adressmap[index]!,namemap[index]!,descmap[index]!)
+              );
+            })
       ),
-      body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              const Text(
-                'You have pushed the button this many times:',
-              ),
-              Text(
-                '$_counter',
-                style: Theme
-                    .of(context)
-                    .textTheme
-                    .headline4,
-              ),
-            ],
-          )
-
-      ),
-          floatingActionButton: FloatingActionButton(
-          onPressed: _incrementCounter,
-          tooltip: 'Increment',
-          child: const Icon(Icons.add),
-      ),
-        bottomNavigationBar: navbar(),
+      bottomNavigationBar: navbar(),
     );
   }
   void _incrementCounter() {

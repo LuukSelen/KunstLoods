@@ -14,10 +14,6 @@ class home extends StatefulWidget {
 }
 
 class _homeState extends State<home> {
-  _selectTab() {
-    Navigator.pushNamed(context, '/camera');
-
-  }
   File? imageFile;
   void _getFromCamera() async {
     XFile? pickedFile = await ImagePicker().pickImage(
