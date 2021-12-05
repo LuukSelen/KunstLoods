@@ -1,6 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
-
+import 'package:project_c/classes/artwork.dart';
 class imageholder extends StatefulWidget {
   var adres;
   var artworkname;

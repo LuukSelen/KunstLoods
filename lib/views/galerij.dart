@@ -4,6 +4,7 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:project_c/widgets/imageholder.dart';
 import 'package:project_c/widgets/navbar.dart';
+import 'package:project_c/classes/artwork.dart';
 
 class galerij extends StatefulWidget {
   const galerij({Key? key}) : super(key: key);
@@ -14,18 +15,15 @@ class galerij extends StatefulWidget {
 
 class _galerijState extends State<galerij> {
   int _counter = 0;
-  final database = FirebaseDatabase.instance.reference();
-  final List<String> artworkname = <String>['Mooi Kunstwerk', 'Mona Lisa','Realiteit'];
-  final List<String> artworkadress = <String>['assets/sample_art.jpg','assets/monalisa.jpeg','assets/vrouw.jpg'];
-  final List<String> artworkdesc = <String>['Hier komt de informatie over de prachtige kunstwerken.','De Mona Lisa! Te vinden in Parijs.','Wanneer het even te veel wordt'];
-
-
+    final List<Artworks> artworks=<Artworks>[
+    new Artworks('assets/sample_art.jpg','Hier komt de informatie over de prachtige kunstwerken.','Mooi Kunstwerk'),
+    new Artworks('assets/monalisa.jpeg', 'De Mona Lisa! Te vinden in Parijs.', 'Mona Lisa'),
+    new Artworks('assets/vrouw.jpg', 'Wanneer het even te veel wordt', 'Realiteit'),
+    ];
   @override
   Widget build(BuildContext context) {
-    final namemap= artworkname.asMap();
-    final adressmap= artworkadress.asMap();
-    final descmap= artworkdesc.asMap();
-    int count= artworkname.length;
+    final Artworksmap= artworks.asMap();
+    int count= Artworksmap.length;
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -39,7 +37,7 @@ class _galerijState extends State<galerij> {
           children:
             List.generate(count, (index){
               return Center(
-                child: imageholder(adressmap[index]!,namemap[index]!,descmap[index]!)
+                child: imageholder(Artworksmap[index]!.url,Artworksmap[index]!.name,Artworksmap[index]!.description)
               );
             })
       ),
