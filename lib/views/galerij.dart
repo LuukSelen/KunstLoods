@@ -3,6 +3,9 @@ import 'dart:math';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:project_c/widgets/navbar.dart';
+import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
+
+import '../storage_service.dart';
 
 class galerij extends StatefulWidget {
   const galerij({Key? key}) : super(key: key);
@@ -17,6 +20,7 @@ class _galerijState extends State<galerij> {
 
   @override
   Widget build(BuildContext context) {
+    final Storage storage= Storage();
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -27,24 +31,63 @@ class _galerijState extends State<galerij> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              const Text(
-                'You have pushed the button this many times:',
-              ),
-              Text(
-                '$_counter',
-                style: Theme
-                    .of(context)
-                    .textTheme
-                    .headline4,
-              ),
-            ],
-          )
+              FutureBuilder(
+                  future: storage.listFiles(),
+                  builder: (BuildContext context, AsyncSnapshot<firebase_storage.ListResult> snapshot) {
+                    if (snapshot.connectionState == ConnectionState.done
+                        && snapshot.hasData) {
+                      //return Container(
+                       // padding: const EdgeInsets.symmetric(horizontal: 20),
+                       // height: 50,child:
+                        return Container(
+                          padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                          height: 200,
+                          //width: 250,
+                          color: Colors.red,
+                          child: ListView.builder(
+                              padding: const EdgeInsets.all(8),
+                              scrollDirection: Axis.vertical,
+                              shrinkWrap: true,
+                              itemCount: snapshot.data!.items.length,
+                              itemBuilder: (BuildContext context, int index){
 
-      ),
-          floatingActionButton: FloatingActionButton(
-          onPressed: _incrementCounter,
-          tooltip: 'Increment',
-          child: const Icon(Icons.add),
+                                return ElevatedButton(
+                                  /*style: ElevatedButton.styleFrom(
+                                    maximumSize: Size(10,10),
+                                  ),*/
+                                  onPressed: () {},
+                                  child: Text(snapshot.data!.items[index].name),
+                            );
+
+                      }),
+                        );
+                      //);
+                    }
+                    if (snapshot.connectionState == ConnectionState.waiting||
+                      !snapshot.hasData){
+                      return CircularProgressIndicator();
+                    }
+                    return Container();
+                  }),
+              FutureBuilder(
+                  future: storage.downloadURL('IMG-1573.JPG'),
+                  builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
+                    if (snapshot.connectionState == ConnectionState.done
+                        && snapshot.hasData) {
+                      return Container(width: 300, height: 250,
+                      child: Image.network(snapshot.data!,
+                          fit: BoxFit.cover
+                      ));
+                    }
+                    if (snapshot.connectionState == ConnectionState.waiting||
+                        !snapshot.hasData){
+                      return CircularProgressIndicator();
+                    }
+                    return Container();
+                  }
+                )
+              ],
+          )
       ),
         bottomNavigationBar: navbar(),
     );
