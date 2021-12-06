@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
 import 'views/galerij.dart';
+import 'views/detail_pagina.dart';
 import 'views/tour.dart';
 import 'views/favoriet.dart';
 import 'views/home.dart';
@@ -89,6 +90,7 @@ Future<void> main() async {
         '/favoriet':(context)=> favoriet(),
         '/galerij':(context)=>galerij(),
         '/tour':(context)=>tour(),
+        '/detail_pagina':(context)=>detail_pagina(),
 
       },
     )

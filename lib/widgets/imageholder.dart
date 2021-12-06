@@ -25,7 +25,7 @@ class _imageholderState extends State<imageholder> {
     this.artworkdesc=artworkdesc;
   }
   _selectTab() {
-    Navigator.pushNamed(context, '/home');
+    Navigator.pushNamed(context, '/detail_pagina', arguments: _imageholderState(adres, artworkname, artworkdesc));
 
   }
   @override

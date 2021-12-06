@@ -37,7 +37,7 @@ class _galerijState extends State<galerij> {
           children:
             List.generate(count, (index){
               return Center(
-                child: imageholder(Artworksmap[index]!.url,Artworksmap[index]!.name,Artworksmap[index]!.description)
+                child: imageholder(Artworksmap[index]!.url,Artworksmap[index]!.name,Artworksmap[index]!.description),
               );
             })
       ),
