@@ -2,10 +2,9 @@
 import 'dart:math';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:project_c/widgets/imageholder.dart';
 import 'package:project_c/widgets/navbar.dart';
-import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
-
-import '../storage_service.dart';
+import 'package:project_c/classes/artwork.dart';
 
 class galerij extends StatefulWidget {
   const galerij({Key? key}) : super(key: key);
@@ -16,80 +15,33 @@ class galerij extends StatefulWidget {
 
 class _galerijState extends State<galerij> {
   int _counter = 0;
-  final database = FirebaseDatabase.instance.reference();
-
+    final List<Artworks> artworks=<Artworks>[
+    new Artworks('assets/sample_art.jpg','Hier komt de informatie over de prachtige kunstwerken.','Mooi Kunstwerk'),
+    new Artworks('assets/monalisa.jpeg', 'De Mona Lisa! Te vinden in Parijs.', 'Mona Lisa'),
+    new Artworks('assets/vrouw.jpg', 'Wanneer het even te veel wordt', 'Realiteit'),
+    ];
   @override
   Widget build(BuildContext context) {
-    final Storage storage= Storage();
+    final Artworksmap= artworks.asMap();
+    int count= Artworksmap.length;
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
 
-        title: Text('galerij'),
+        title: Text('Cavero Loods Tour'),
+      ) ,
+      body: GridView.count(
+          childAspectRatio: 3/2,
+          crossAxisCount: 1,
+          mainAxisSpacing: 1,
+          children:
+            List.generate(count, (index){
+              return Center(
+                child: imageholder(Artworksmap[index]!.url,Artworksmap[index]!.name,Artworksmap[index]!.description)
+              );
+            })
       ),
-      body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              FutureBuilder(
-                  future: storage.listFiles(),
-                  builder: (BuildContext context, AsyncSnapshot<firebase_storage.ListResult> snapshot) {
-                    if (snapshot.connectionState == ConnectionState.done
-                        && snapshot.hasData) {
-                      //return Container(
-                       // padding: const EdgeInsets.symmetric(horizontal: 20),
-                       // height: 50,child:
-                        return Container(
-                          padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-                          height: 200,
-                          //width: 250,
-                          color: Colors.red,
-                          child: ListView.builder(
-                              padding: const EdgeInsets.all(8),
-                              scrollDirection: Axis.vertical,
-                              shrinkWrap: true,
-                              itemCount: snapshot.data!.items.length,
-                              itemBuilder: (BuildContext context, int index){
-
-                                return ElevatedButton(
-                                  /*style: ElevatedButton.styleFrom(
-                                    maximumSize: Size(10,10),
-                                  ),*/
-                                  onPressed: () {},
-                                  child: Text(snapshot.data!.items[index].name),
-                            );
-
-                      }),
-                        );
-                      //);
-                    }
-                    if (snapshot.connectionState == ConnectionState.waiting||
-                      !snapshot.hasData){
-                      return CircularProgressIndicator();
-                    }
-                    return Container();
-                  }),
-              FutureBuilder(
-                  future: storage.downloadURL('IMG-1573.JPG'),
-                  builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
-                    if (snapshot.connectionState == ConnectionState.done
-                        && snapshot.hasData) {
-                      return Container(width: 300, height: 250,
-                      child: Image.network(snapshot.data!,
-                          fit: BoxFit.cover
-                      ));
-                    }
-                    if (snapshot.connectionState == ConnectionState.waiting||
-                        !snapshot.hasData){
-                      return CircularProgressIndicator();
-                    }
-                    return Container();
-                  }
-                )
-              ],
-          )
-      ),
-        bottomNavigationBar: navbar(),
+      bottomNavigationBar: navbar(),
     );
   }
   void _incrementCounter() {
