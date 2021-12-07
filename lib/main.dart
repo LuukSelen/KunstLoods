@@ -73,6 +73,10 @@ Map<int, Color> grey =
 
 MaterialColor CustomGreyText = MaterialColor(0xFFB09D7E, grey);
 
+String globaladres = '';
+String globalartworkname = '';
+String globalartworkdesc = '';
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();

@@ -18,7 +18,7 @@ class _galerijState extends State<galerij> {
     final List<Artworks> artworks=<Artworks>[
     new Artworks('assets/sample_art.jpg','Hier komt de informatie over de prachtige kunstwerken.','Mooi Kunstwerk'),
     new Artworks('assets/monalisa.jpeg', 'De Mona Lisa! Te vinden in Parijs.', 'Mona Lisa'),
-    new Artworks('assets/vrouw.jpg', 'Wanneer het even te veel wordt', 'Realiteit'),
+    new Artworks('assets/vrouw.jpg', 'Wanneer je die jonko flink op zn flikker geeft', 'Realiteit'),
     ];
   @override
   Widget build(BuildContext context) {

@@ -1,6 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
 import 'package:project_c/classes/artwork.dart';
+import 'package:project_c/main.dart';
+
 class imageholder extends StatefulWidget {
   var adres;
   var artworkname;
@@ -25,6 +27,9 @@ class _imageholderState extends State<imageholder> {
     this.artworkdesc=artworkdesc;
   }
   _selectTab() {
+    globaladres = adres;
+    globalartworkname = artworkname;
+    globalartworkdesc = artworkdesc;
     Navigator.pushNamed(context, '/detail_pagina', arguments: _imageholderState(adres, artworkname, artworkdesc));
 
   }

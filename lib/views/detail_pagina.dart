@@ -6,6 +6,8 @@ import 'package:project_c/widgets/navbar.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:project_c/main.dart';
+
 class detail_pagina extends StatefulWidget {
   const detail_pagina({Key? key}) : super(key: key);
 
@@ -21,7 +23,7 @@ class _detail_paginaState extends State<detail_pagina> {
         appBar: AppBar(
           centerTitle: true,
 
-          title: Text('Cavero Loods Tour'),
+          title: Text(globalartworkname),
         ),
         body: Center(
 
@@ -30,12 +32,13 @@ class _detail_paginaState extends State<detail_pagina> {
             mainAxisAlignment: MainAxisAlignment.start  ,
             children:  <Widget>[
               Image(
-                  image: AssetImage('assets/logo.png')
+                  image: AssetImage(globaladres)
               ),
+
               SizedBox(
                 width: 300,
                 child: Text(
-                  'text van foto',
+                  globalartworkdesc,
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.grey,
