@@ -19,38 +19,70 @@ class _detail_paginaState extends State<detail_pagina> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      body: CustomScrollView(
 
-        appBar: AppBar(
-          centerTitle: true,
-
-          title: Text(globalartworkname),
-        ),
-        body: Center(
-
-          child: Column(
-
-            mainAxisAlignment: MainAxisAlignment.start  ,
-            children:  <Widget>[
-              Image(
-                  image: AssetImage(globaladres)
-              ),
-
-              SizedBox(
-                width: 300,
-                child: Text(
-                  globalartworkdesc,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.grey,
-                      fontWeight: FontWeight.bold,
+        physics: const BouncingScrollPhysics(
+            parent: AlwaysScrollableScrollPhysics()),
+        slivers: <Widget>[
+          SliverAppBar(
+            stretch: true,
+            onStretchTrigger: () {
+              // Function callback for stretch
+              return Future<void>.value();
+            },
+            expandedHeight: 300.0,
+            flexibleSpace: FlexibleSpaceBar(
+              stretchModes: const <StretchMode>[
+                StretchMode.zoomBackground,
+                StretchMode.blurBackground,
+                StretchMode.fadeTitle,
+              ],
+              centerTitle: true,
+              title: Text(globalartworkname),
+              background: Stack(
+                fit: StackFit.expand,
+                children: <Widget>[
+                  Image(
+                    image: AssetImage(globaladres),
+                    fit: BoxFit.cover,
                   ),
-                ),
+                  const DecoratedBox(
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment(0.0, 1),
+                        end: Alignment.center,
+                        colors: <Color>[
+                          Color(0xFF214249),
+                          Color(0x00000000),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
               ),
-            ],
+            ),
           ),
-        ),
-        bottomNavigationBar:navbar()// This trailing comma makes auto-formatting nicer for build methods.
+          SliverList(
+            delegate: SliverChildListDelegate(
+               <Widget>[
+                ListTile(
 
+                  leading: Icon(Icons.info),
+                  title: Text('Informatie'),
+                  subtitle: Text(globalartworkdesc),
+                ),
+                ListTile(
+                  leading: Icon(Icons.brush),
+                  title: Text('Artiest'),
+                  subtitle: Text('Pietje'),
+                ),
+                // ListTiles++
+              ],
+            ),
+          ),
+        ],
+      ),
+        bottomNavigationBar:navbar()
     );
   }
 }
