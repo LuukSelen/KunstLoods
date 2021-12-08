@@ -34,9 +34,8 @@ class _imageholderState extends State<imageholder> {
   }
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      resizeToAvoidBottomInset: false,
-       body: Center(
+    return
+        Center(
          child: Column(
              children: <Widget>[
                SizedBox(height: 10),
@@ -82,7 +81,6 @@ class _imageholderState extends State<imageholder> {
                )
              ]
          ),
-       )
     );
   }
 }

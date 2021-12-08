@@ -25,6 +25,7 @@ class _galerijState extends State<galerij> {
     final Artworksmap= artworks.asMap();
     int count= Artworksmap.length;
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         centerTitle: true,
 
