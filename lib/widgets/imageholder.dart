@@ -1,6 +1,5 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
-import 'package:project_c/classes/artwork.dart';
 import 'package:project_c/main.dart';
 
 class imageholder extends StatefulWidget {
@@ -35,50 +34,55 @@ class _imageholderState extends State<imageholder> {
   }
   @override
   Widget build(BuildContext context) {
-    return Column(
-          children: <Widget>[
-            SizedBox(height: 10),
-            InkWell(
-              child: Container(
-                width: 300,
-                height: 150,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                    topRight: Radius.circular(40),
-                    topLeft: Radius.circular(40),
-                  ),
-                  image: DecorationImage(
-                    image: AssetImage(adres),
-                    fit: BoxFit.fill,
-                  ),
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+       body: Center(
+         child: Column(
+             children: <Widget>[
+               SizedBox(height: 10),
+               InkWell(
+                 child: Container(
+                   width: 300,
+                   height: 150,
+                   decoration: BoxDecoration(
+                     borderRadius: BorderRadius.only(
+                       topRight: Radius.circular(40),
+                       topLeft: Radius.circular(40),
+                     ),
+                     image: DecorationImage(
+                       image: AssetImage(adres),
+                       fit: BoxFit.fill,
+                     ),
 
-                ),
-              ),
-              onTap: ()=>_selectTab(),
-            ),
-            InkWell(
-             child: Container(
-                width: 300,
-                height: 100,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                    bottomRight: Radius.circular(40),
-                    bottomLeft: Radius.circular(40),
-                  ),
-                  color: Colors.white,
-                ),
-                child: Column(
-                    children: <Widget>[
-                      SizedBox(height: 3),
-                      Text(artworkname,textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.bold)),
-                      SizedBox(height: 10),
-                      Text(artworkdesc,textAlign: TextAlign.center),
-                    ]
-                ),
-              ),
-                onTap: ()=>_selectTab(),
-            )
-          ]
+                   ),
+                 ),
+                 onTap: ()=>_selectTab(),
+               ),
+               InkWell(
+                 child: Container(
+                   width: 300,
+                   height: 100,
+                   decoration: BoxDecoration(
+                     borderRadius: BorderRadius.only(
+                       bottomRight: Radius.circular(40),
+                       bottomLeft: Radius.circular(40),
+                     ),
+                     color: Colors.white,
+                   ),
+                   child: Column(
+                       children: <Widget>[
+                         SizedBox(height: 3),
+                         Text(artworkname,textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.bold)),
+                         SizedBox(height: 10),
+                         Text(artworkdesc,textAlign: TextAlign.center),
+                       ]
+                   ),
+                 ),
+                 onTap: ()=>_selectTab(),
+               )
+             ]
+         ),
+       )
     );
   }
 }
