@@ -39,7 +39,12 @@ dependencies:
   # the following sets up Firebase connectivity.
   firebase_core: ^1.10.0
   firebase_database: ^8.1.0
+  cloud_firestore:
 
+  # the following adds qr scanning & permission handling to the application
+  qr_flutter:
+  qrscan: ^0.3.2
+  permission_handler:
 
 
 dev_dependencies:
