@@ -86,7 +86,3 @@ class _detail_paginaState extends State<detail_pagina> {
     );
   }
 }
-
-
-
-
