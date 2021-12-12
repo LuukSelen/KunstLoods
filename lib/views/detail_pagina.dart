@@ -43,7 +43,9 @@ class _detail_paginaState extends State<detail_pagina> {
                 fit: StackFit.expand,
                 children: <Widget>[
                   Image(
-                    image: AssetImage(globaladres),
+                    image: globaladres != 'noImage'
+                        ? NetworkImage(globaladres)
+                        : AssetImage('assets/images/noImageAvailable.png') as ImageProvider,
                     fit: BoxFit.cover,
                   ),
                   const DecoratedBox(

@@ -49,7 +49,9 @@ class _imageholderState extends State<imageholder> {
                        topLeft: Radius.circular(40),
                      ),
                      image: DecorationImage(
-                       image: AssetImage(adres),
+                       image: adres != 'noImage'
+                           ? NetworkImage(adres)
+                           : AssetImage('assets/images/noImageAvailable.png') as ImageProvider,
                        fit: BoxFit.fill,
                      ),
 

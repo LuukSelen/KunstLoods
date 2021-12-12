@@ -1,10 +1,13 @@
 // ignore_for_file: prefer_const_constructors
 import 'dart:math';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:project_c/widgets/imageholder.dart';
 import 'package:project_c/widgets/navbar.dart';
 import 'package:project_c/classes/artwork.dart';
+
 
 class galerij extends StatefulWidget {
   const galerij({Key? key}) : super(key: key);
@@ -15,6 +18,7 @@ class galerij extends StatefulWidget {
 
 class _galerijState extends State<galerij> {
   int _counter = 0;
+    final Stream<QuerySnapshot> databaseart = FirebaseFirestore.instance.collection('loods_art').snapshots();
     final List<Artworks> artworks=<Artworks>[
     new Artworks('assets/sample_art.jpg','Hier komt de informatie over de prachtige kunstwerken.','Mooi Kunstwerk'),
     new Artworks('assets/monalisa.jpeg', 'De Mona Lisa! Te vinden in Parijs.', 'Mona Lisa'),
@@ -30,17 +34,33 @@ class _galerijState extends State<galerij> {
 
         title: Text('Cavero Loods Tour'),
       ) ,
-      body: GridView.count(
-          childAspectRatio: 3/2,
-          crossAxisCount: 1,
-          mainAxisSpacing: 1,
-          children:
-            List.generate(count, (index){
-              return Center(
-                child: imageholder(Artworksmap[index]!.url,Artworksmap[index]!.name,Artworksmap[index]!.description),
-              );
-            })
+      body: StreamBuilder<QuerySnapshot>(
+          stream:databaseart,
+          builder: (
+              BuildContext context,
+              AsyncSnapshot<QuerySnapshot> snapshot,
+              ){
+                  if (snapshot.hasError){
+                    return Text('Helaas is er iets fout gegaan');
+                  }
+                  if (snapshot.connectionState== ConnectionState.waiting){
+                    return Text('Aan het laden');
+                  }
+                  final artdata = snapshot.requireData;
+                  return GridView.count(
+                    childAspectRatio: 3/2,
+                    crossAxisCount: 1,
+                    mainAxisSpacing: 1,
+                      children: List.generate( artdata.size, (index){
+                        return Center(
+                          child: imageholder(artdata.docs[index]['url'],artdata.docs[index]['name'],artdata.docs[index]['description']),
+                        );
+                      }
+                      )
+                  );
+                }
       ),
+
       bottomNavigationBar: navbar(),
     );
   }
