@@ -76,7 +76,7 @@ class _detail_paginaState extends State<detail_pagina> {
                 ListTile(
                   leading: Icon(Icons.brush),
                   title: Text('Artiest'),
-                  subtitle: Text('Pietje'),
+                  subtitle: Text('Artiest'),
                 ),
                 // ListTiles++
               ],
