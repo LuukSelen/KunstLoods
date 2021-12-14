@@ -77,7 +77,7 @@ class _homeState extends State<home> {
         appBar: AppBar(
           centerTitle: true,
           backgroundColor: colorCustombutton,
-          title: Text('Cavero Loods Tourr'),
+          title: Text('Cavero Loods Tour'),
         ),
         body: Center(
 
