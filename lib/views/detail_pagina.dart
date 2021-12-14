@@ -78,6 +78,11 @@ class _detail_paginaState extends State<detail_pagina> {
                   title: Text('Artiest'),
                   subtitle: Text(globalartist),
                 ),
+                ListTile(
+                    leading: Icon(Icons.date_range),
+                    title: Text('Jaar'),
+                    subtitle: Text('N/A'),
+               ),
                 // ListTiles++
               ],
             ),
