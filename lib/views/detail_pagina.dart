@@ -30,7 +30,7 @@ class _detail_paginaState extends State<detail_pagina> {
               // Function callback for stretch
               return Future<void>.value();
             },
-            expandedHeight: 300.0,
+            expandedHeight: 400.0,
             flexibleSpace: FlexibleSpaceBar(
               stretchModes: const <StretchMode>[
                 StretchMode.zoomBackground,
