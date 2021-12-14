@@ -6,6 +6,7 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:project_c/widgets/imageholder.dart';
 import 'package:project_c/widgets/navbar.dart';
+import 'package:project_c/main.dart';
 
 
 
@@ -24,7 +25,7 @@ class _galerijState extends State<galerij> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-
+        backgroundColor: colorCustombutton,
         title: Text('Cavero Loods Tour'),
       ) ,
       body: StreamBuilder<QuerySnapshot>(

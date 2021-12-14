@@ -7,6 +7,7 @@ import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:project_c/main.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class detail_pagina extends StatefulWidget {
   const detail_pagina({Key? key}) : super(key: key);
@@ -30,7 +31,7 @@ class _detail_paginaState extends State<detail_pagina> {
               // Function callback for stretch
               return Future<void>.value();
             },
-            expandedHeight: 300.0,
+            expandedHeight: 400.0,
             flexibleSpace: FlexibleSpaceBar(
               stretchModes: const <StretchMode>[
                 StretchMode.zoomBackground,
@@ -67,21 +68,26 @@ class _detail_paginaState extends State<detail_pagina> {
           SliverList(
             delegate: SliverChildListDelegate(
                <Widget>[
-                ListTile(
-
-                  leading: Icon(Icons.info),
-                  title: Text('Informatie'),
-                  subtitle: Text(globalartworkdesc),
-                ),
-                ListTile(
-                  leading: Icon(Icons.brush),
-                  title: Text('Artiest'),
-                  subtitle: Text(globalartist),
-                ),
-                // ListTiles++
+                  ListTile(
+                    leading: Icon(Icons.info),
+                    title: Text('Informatie'),
+                    subtitle: Text(globalartworkdesc),
+                  ),
+                  ListTile(
+                    leading: Icon(Icons.brush),
+                    title: Text('Artiest'),
+                    subtitle: Text(globalartist),
+                  ),
+                 ListTile(
+                    leading: Icon(Icons.date_range),
+                    title: Text('Jaar'),
+                    subtitle: Text('N/A'),
+               ),
+                 // ListTiles++
               ],
             ),
           ),
+
         ],
       ),
         bottomNavigationBar:navbar()

@@ -76,8 +76,8 @@ class _homeState extends State<home> {
 
         appBar: AppBar(
           centerTitle: true,
-
-          title: Text('Cavero Loods Tour'),
+          backgroundColor: colorCustombutton,
+          title: Text('Cavero Loods Tourr'),
         ),
         body: Center(
 
@@ -86,12 +86,14 @@ class _homeState extends State<home> {
             mainAxisAlignment: MainAxisAlignment.start  ,
             children:  <Widget>[
               Image(
-                  image: AssetImage('assets/logo.png')
+                  image: AssetImage('assets/logo.png'),
+                  height:230,
+                  fit: BoxFit.fill,
               ),
               SizedBox(
                 width: 300,
                 child: Text(
-                  'Welkom bij de Cavero Loods tour. Op onze locaties zijn er meerde plekken die interessant kunnen zijn. Wilt u kijken of er meer informatie is over een bepaalde plek? Dan kunt u gebruik maken van de camera om een scan te maken. Als er een match is zult u meer informatie krijgen.\n\n\n\n\n\n\n\nBegin met scannen door op de onderstaande knop te klikken.\n',
+                  'Welkom bij de Cavero Loods tour. Op onze locaties zijn er meerdere plekken die interessant kunnen zijn. Wilt u kijken of er meer informatie is over een bepaalde plek? Dan kunt u gebruik maken van de camera om een scan te maken. Als er een match is zult u meer informatie krijgen.\n\n\n\n\n\n\n\nBegin met scannen door op de onderstaande knop te klikken.\n',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.grey,

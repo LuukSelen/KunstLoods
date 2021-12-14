@@ -47,6 +47,8 @@ dependencies:
   # adds camera and file permission request
   permission_handler:
 
+  # adds youtube player functionality
+  youtube_player_flutter: ^8.0.0
 
 dev_dependencies:
   flutter_test:
