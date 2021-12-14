@@ -6,30 +6,36 @@ class imageholder extends StatefulWidget {
   var adres;
   var artworkname;
   var artworkdesc;
+  var artist;
 
-  imageholder(String s, String b , String c){
+  imageholder(String s, String b , String c, String d){
     this.adres=s;
     this.artworkname=b;
     this.artworkdesc=c;
+    this.artist=d;
   }
   @override
-  _imageholderState createState() => _imageholderState(adres,artworkname,artworkdesc);
+  _imageholderState createState() => _imageholderState(adres,artworkname,artworkdesc,artist);
 }
 
 class _imageholderState extends State<imageholder> {
   var adres;
   var artworkname;
   var artworkdesc;
-  _imageholderState(var adres,var artworkname, var artworkdesc){
+  var artist;
+
+  _imageholderState(var adres,var artworkname, var artworkdesc, var artist){
     this.adres=adres;
     this.artworkname=artworkname;
     this.artworkdesc=artworkdesc;
+    this.artist=artist;
   }
   _selectTab() {
     globaladres = adres;
     globalartworkname = artworkname;
     globalartworkdesc = artworkdesc;
-    Navigator.pushNamed(context, '/detail_pagina', arguments: _imageholderState(adres, artworkname, artworkdesc));
+    globalartist = artist;
+    Navigator.pushNamed(context, '/detail_pagina', arguments: _imageholderState(adres, artworkname, artworkdesc, artist));
 
   }
   @override
@@ -42,17 +48,18 @@ class _imageholderState extends State<imageholder> {
                InkWell(
                  child: Container(
                    width: 300,
-                   height: 150,
+                   height: 200,
                    decoration: BoxDecoration(
                      borderRadius: BorderRadius.only(
-                       topRight: Radius.circular(40),
-                       topLeft: Radius.circular(40),
+                       topRight: Radius.circular(10),
+                       topLeft: Radius.circular(10),
                      ),
                      image: DecorationImage(
+                       // placeholder: ''
                        image: adres != 'noImage'
                            ? NetworkImage(adres)
                            : AssetImage('assets/images/noImageAvailable.png') as ImageProvider,
-                       fit: BoxFit.fill,
+                       fit: BoxFit.cover,
                      ),
 
                    ),
@@ -62,27 +69,40 @@ class _imageholderState extends State<imageholder> {
                InkWell(
                  child: Container(
                    width: 300,
-                   height: 100,
+                   height: 50,
                    decoration: BoxDecoration(
                      borderRadius: BorderRadius.only(
-                       bottomRight: Radius.circular(40),
-                       bottomLeft: Radius.circular(40),
+                       bottomRight: Radius.circular(10),
+                       bottomLeft: Radius.circular(10),
                      ),
                      color: Colors.white,
                    ),
                    child: Column(
                        children: <Widget>[
-                         SizedBox(height: 3),
+                         SizedBox(height: 4),
                          Text(artworkname,textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.bold)),
-                         SizedBox(height: 10),
-                         Text(artworkdesc,textAlign: TextAlign.center),
-                       ]
+                         SizedBox(height: 2),
+                         // Flexible(
+                         //   child: Text(artworkdesc,textAlign: TextAlign.center, overflow: TextOverflow.ellipsis),
+                         // ),
+                         Padding(
+                           padding: const EdgeInsets.fromLTRB(13, 0, 13, 0),
+                           // Text(artworkdesc,textAlign: TextAlign.center, overflow: TextOverflow.ellipsis),
+                           child: Text(
+                               artworkdesc,
+                               maxLines: 1,
+                               textAlign: TextAlign.center,
+                               overflow: TextOverflow.fade,
+                               softWrap: false,
+                           ),
+                         )
+                       ],
                    ),
                  ),
                  onTap: ()=>_selectTab(),
-               )
-             ]
-         ),
+               ),
+             ],
+       ),
     );
   }
 }

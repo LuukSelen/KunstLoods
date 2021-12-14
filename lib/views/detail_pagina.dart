@@ -34,7 +34,7 @@ class _detail_paginaState extends State<detail_pagina> {
             flexibleSpace: FlexibleSpaceBar(
               stretchModes: const <StretchMode>[
                 StretchMode.zoomBackground,
-                StretchMode.blurBackground,
+                // StretchMode.blurBackground,
                 StretchMode.fadeTitle,
               ],
               centerTitle: true,
@@ -76,7 +76,7 @@ class _detail_paginaState extends State<detail_pagina> {
                 ListTile(
                   leading: Icon(Icons.brush),
                   title: Text('Artiest'),
-                  subtitle: Text('Artiest'),
+                  subtitle: Text(globalartist),
                 ),
                 // ListTiles++
               ],

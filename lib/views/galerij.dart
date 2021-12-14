@@ -46,7 +46,7 @@ class _galerijState extends State<galerij> {
                     mainAxisSpacing: 1,
                       children: List.generate( artdata.size, (index){
                         return Center(
-                          child: imageholder(artdata.docs[index]['url'],artdata.docs[index]['name'],artdata.docs[index]['description']),
+                          child: imageholder(artdata.docs[index]['url'],artdata.docs[index]['name'],artdata.docs[index]['description'], artdata.docs[index]['artist']),
                         );
                       }
                       )

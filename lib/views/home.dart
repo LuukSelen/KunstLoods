@@ -6,6 +6,10 @@ import 'package:project_c/widgets/navbar.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:qrscan/qrscan.dart' as scanner;
+import 'package:permission_handler/permission_handler.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class home extends StatefulWidget {
   const home({Key? key}) : super(key: key);
 
@@ -14,17 +18,58 @@ class home extends StatefulWidget {
 }
 
 class _homeState extends State<home> {
-  File? imageFile;
-  void _getFromCamera() async {
-    XFile? pickedFile = await ImagePicker().pickImage(
-      source: ImageSource.camera,
-      maxHeight: 1080,
-      maxWidth: 1080,
-    );
-    setState(() {
-      imageFile = File(pickedFile!.path);
-    });
+  final Stream<QuerySnapshot> databaseart = FirebaseFirestore.instance.collection('loods_art').snapshots();
+
+  var adres;
+  var artworkname;
+  var artworkdesc;
+  var artist;
+  _imageholderState(var adres,var artworkname, var artworkdesc, var artist){
+    this.adres=adres;
+    this.artworkname=artworkname;
+    this.artworkdesc=artworkdesc;
+    this.artist=artist;
   }
+
+  Future _qrScanner() async{
+    var cameraStatus = await Permission.camera.status;
+    // var list=['Mooi Kunstwerk','Mona Lisa','Realiteit'];
+
+
+    void showDetailpage() async{
+      String? qrdata = await scanner.scan();
+      print(qrdata);
+
+      FirebaseFirestore.instance
+          .collection('loods_art')
+          .doc(qrdata)
+          .get()
+          .then((DocumentSnapshot documentSnapshot) {
+        if (documentSnapshot.exists) {
+          // print('Document data: ${documentSnapshot.data()}');
+          globaladres = documentSnapshot.get('url');
+          globalartworkname = documentSnapshot.get('name');
+          globalartworkdesc = documentSnapshot.get('description');
+          globalartist = documentSnapshot.get('artist');
+          Navigator.pushNamed(context, '/detail_pagina', arguments: _imageholderState(globaladres, globalartworkname, globalartworkdesc, globalartist));
+        } else {
+          print('errrrorrrr, file document does not exist');
+        }
+      });
+
+    }
+
+    if(cameraStatus.isGranted)
+    {
+      showDetailpage();
+    } else {
+      var isGrant = await Permission.camera.request();
+      if(isGrant.isGranted){
+        showDetailpage();
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,7 +106,8 @@ class _homeState extends State<home> {
                 foregroundColor: Colors.black,
                 backgroundColor: colorCustombutton,
                 elevation: 5,
-                onPressed: () => _getFromCamera(),
+                // onPressed: () => _getFromCamera(),
+                onPressed: () => _qrScanner(),
                 label:Text('Scan een object'),
                 icon: Icon(Icons.add_a_photo ),
               ),

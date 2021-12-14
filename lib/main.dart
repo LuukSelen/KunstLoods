@@ -76,6 +76,7 @@ MaterialColor CustomGreyText = MaterialColor(0xFFB09D7E, grey);
 String globaladres = '';
 String globalartworkname = '';
 String globalartworkdesc = '';
+String globalartist = '';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

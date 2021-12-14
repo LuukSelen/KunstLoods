@@ -41,6 +41,11 @@ dependencies:
   firebase_database: ^8.1.0
   cloud_firestore: ^2.2.2
 
+  # adds qr scan functionality
+  qrscan: ^0.3.2
+
+  # adds camera and file permission request
+  permission_handler:
 
 
 dev_dependencies:
