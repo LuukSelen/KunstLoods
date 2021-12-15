@@ -18,6 +18,8 @@ class detail_pagina extends StatefulWidget {
 }
 
 class _detail_paginaState extends State<detail_pagina> {
+  bool _isFavorited = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -87,7 +89,18 @@ class _detail_paginaState extends State<detail_pagina> {
                     subtitle: Text('N/A'),
                     textColor: HexColor('#FFFFFF'),
                ),
-                 // ListTiles++
+                 IconButton(
+                   icon: Icon(_isFavorited ? Icons.favorite : Icons.favorite_border),
+                   iconSize: 30,
+                   color: colorCustombutton,
+                   onPressed: () {
+                     setState(() {
+                       _isFavorited = !_isFavorited;
+                       const snackBar = SnackBar(content: Text('Favoriet opgeslagen'));
+                       ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                     });
+                   },
+                 ), // ListTiles++
               ],
             ),
           ),

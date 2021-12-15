@@ -11,24 +11,37 @@ class navbar extends StatefulWidget {
 }
 
 class _navbarState extends State<navbar> {
-  final list=['/tour','/galerij','/favoriet'];
+  // final list=['/home','/galerij','/favoriet'];
+  final list=['/galerij','/favoriet','/contact'];
   _selectTab(int Route) {
-   Navigator.pushNamed(context, list[Route]);
-
+    if(ModalRoute.of(context)?.settings.name=='/home'){
+      Navigator.pushNamed(context, list[Route]);
+    }
+    else {
+      Navigator.pop(context);
+      Navigator.pushNamed(context, list[Route]);
+    }
   }
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(onTap: (index) => _selectTab(index),
       showSelectedLabels: false,showUnselectedLabels: false,type: BottomNavigationBarType.fixed, backgroundColor: CustomBlack,items: const <BottomNavigationBarItem>[
-      BottomNavigationBarItem(
-          icon: Icon(Icons.add_location,color: Colors.white,size:30),
-          label: 'Tour'),
-      BottomNavigationBarItem(
+      // BottomNavigationBarItem(
+          // icon: Icon(Icons.add_location,color: Colors.white,size:30),
+          // label: 'Tour'
+        // ),
+        BottomNavigationBarItem(
           icon: Icon(Icons.photo,color: Colors.white,size:30),
-          label: 'Gallerij'),
-      BottomNavigationBarItem(
+          label: 'Gallerij'
+        ),
+        BottomNavigationBarItem(
           icon: Icon(Icons.favorite,color: Colors.white,size:30),
-          label: '/favorieten'),
+          label: '/favorieten'
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.contact_support,color: Colors.white,size:30),
+          label: 'Contact'
+        ),
     ],
 
     );

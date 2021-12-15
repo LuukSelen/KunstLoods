@@ -5,6 +5,7 @@ import 'views/detail_pagina.dart';
 import 'views/tour.dart';
 import 'views/favoriet.dart';
 import 'views/home.dart';
+import 'views/contact.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
@@ -98,6 +99,7 @@ Future<void> main() async {
         '/galerij':(context)=>galerij(),
         '/tour':(context)=>tour(),
         '/detail_pagina':(context)=>detail_pagina(),
+        '/contact':(context)=>contact(),
 
       },
     )
