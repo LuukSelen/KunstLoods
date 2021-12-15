@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
+import 'package:hexcolor/hexcolor.dart';
 import 'package:project_c/main.dart';
 import 'favoriet.dart';
 import 'package:project_c/widgets/navbar.dart';
@@ -69,19 +70,22 @@ class _detail_paginaState extends State<detail_pagina> {
             delegate: SliverChildListDelegate(
                <Widget>[
                   ListTile(
-                    leading: Icon(Icons.info),
-                    title: Text('Informatie'),
+                    leading: Icon(Icons.info, color: HexColor('#FFFFFF'),),
+                    title: Text('Informatie', style: TextStyle(fontWeight: FontWeight.bold),),
                     subtitle: Text(globalartworkdesc),
+                    textColor: HexColor('#FFFFFF'),
                   ),
                   ListTile(
-                    leading: Icon(Icons.brush),
-                    title: Text('Artiest'),
+                    leading: Icon(Icons.brush, color: HexColor('#FFFFFF'),),
+                    title: Text('Artiest', style: TextStyle(fontWeight: FontWeight.bold),),
                     subtitle: Text(globalartist),
+                    textColor: HexColor('#FFFFFF'),
                   ),
                  ListTile(
-                    leading: Icon(Icons.date_range),
-                    title: Text('Jaar'),
+                    leading: Icon(Icons.date_range, color: HexColor('#FFFFFF'),),
+                    title: Text('Jaar', style: TextStyle(fontWeight: FontWeight.bold),),
                     subtitle: Text('N/A'),
+                    textColor: HexColor('#FFFFFF'),
                ),
                  // ListTiles++
               ],
