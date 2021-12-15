@@ -96,8 +96,14 @@ class _detail_paginaState extends State<detail_pagina> {
                    onPressed: () {
                      setState(() {
                        _isFavorited = !_isFavorited;
-                       const snackBar = SnackBar(content: Text('Favoriet opgeslagen'));
-                       ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                       if (_isFavorited){
+                         const snackBar = SnackBar(duration: const Duration(milliseconds: 600), content: Text('Favoriet opgeslagen'));
+                         ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                       } else {
+                         const snackBar = SnackBar(duration: const Duration(milliseconds: 600), content: Text('Favoriet verwijderd'));
+                         ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                       }
+
                      });
                    },
                  ), // ListTiles++
