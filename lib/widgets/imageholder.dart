@@ -48,7 +48,7 @@ class _imageholderState extends State<imageholder> {
                InkWell(
                  child: Container(
                    width: 300,
-                   height: 200,
+                   height: 190,
                    decoration: BoxDecoration(
                      borderRadius: BorderRadius.only(
                        topRight: Radius.circular(10),
@@ -69,7 +69,7 @@ class _imageholderState extends State<imageholder> {
                InkWell(
                  child: Container(
                    width: 300,
-                   height: 50,
+                   height: 40,
                    decoration: BoxDecoration(
                      borderRadius: BorderRadius.only(
                        bottomRight: Radius.circular(10),
