@@ -80,6 +80,7 @@ String globaladres = '';
 String globalartworkname = '';
 String globalartworkdesc = '';
 String globalartist = '';
+List<String> globalfavlist = [];
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
