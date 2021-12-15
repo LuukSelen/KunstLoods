@@ -40,6 +40,7 @@ dependencies:
   firebase_core: ^1.10.0
   firebase_database: ^8.1.0
   cloud_firestore: ^2.2.2
+  hexcolor: ^2.0.5
 
   # adds qr scan functionality
   qrscan: ^0.3.2
