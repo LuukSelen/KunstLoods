@@ -87,8 +87,8 @@ class _homeState extends State<home> {
             children:  <Widget>[
               Image(
                   image: AssetImage('assets/logo.png'),
-                  height:230,
-                  fit: BoxFit.fill,
+                  //height:230,
+                  //fit: BoxFit.fill,
               ),
               SizedBox(
                 width: 300,
