@@ -88,7 +88,7 @@ Future<void> main() async {
     MaterialApp(
         title: 'Cavero Loods Tour',
         theme: ThemeData(
-          primarySwatch: Hexcolor("#FFB09D7E"),
+          primarySwatch:  CustomBlack,
           scaffoldBackgroundColor: colorCustombg,
         ),
       initialRoute: '/home',
