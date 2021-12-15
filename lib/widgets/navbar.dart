@@ -13,8 +13,13 @@ class navbar extends StatefulWidget {
 class _navbarState extends State<navbar> {
   final list=['/tour','/galerij','/favoriet'];
   _selectTab(int Route) {
-   Navigator.pushNamed(context, list[Route]);
-
+    if(ModalRoute.of(context)?.settings.name=='/home'){
+      Navigator.pushNamed(context, list[Route]);
+    }
+    else {
+      Navigator.pop(context);
+      Navigator.pushNamed(context, list[Route]);
+    }
   }
   @override
   Widget build(BuildContext context) {
