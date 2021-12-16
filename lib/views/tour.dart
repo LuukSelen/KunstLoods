@@ -1,7 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
-import 'package:project_c/widgets/navbar.dart';
-import 'package:project_c/main.dart';
+import 'package:project_c/views/views.dart';
+import 'package:project_c/widgets/widgets.dart';
+import 'package:project_c/classes/custom_colors.dart';
 
 class tour extends StatelessWidget {
   const tour({Key? key}) : super(key: key);

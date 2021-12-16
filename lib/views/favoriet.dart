@@ -1,9 +1,10 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
-import 'package:project_c/widgets/navbar.dart';
+import 'package:project_c/views/views.dart';
+import 'package:project_c/widgets/widgets.dart';
 import 'package:project_c/main.dart';
+import 'package:project_c/classes/custom_colors.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:project_c/widgets/imageholder.dart';
 
 class favoriet extends StatelessWidget {
 

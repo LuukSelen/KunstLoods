@@ -1,11 +1,9 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
 import 'package:project_c/main.dart';
-import 'favoriet.dart';
-import 'package:project_c/widgets/navbar.dart';
-import 'package:image_picker/image_picker.dart';
-import 'dart:io';
-import 'package:flutter/material.dart';
+import 'package:project_c/classes/custom_colors.dart';
+import 'package:project_c/views/views.dart';
+import 'package:project_c/widgets/widgets.dart';
 import 'package:qrscan/qrscan.dart' as scanner;
 import 'package:permission_handler/permission_handler.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -81,15 +79,13 @@ class _homeState extends State<home> {
         ),
         body: SingleChildScrollView(
           child:Center(
-
             child: Column(
-
               mainAxisAlignment: MainAxisAlignment.start  ,
               children:  <Widget>[
                 Image(
                   image: AssetImage('assets/logo.png'),
-                  height:230,
-                  fit: BoxFit.fill,
+                  // height:230,
+                  // fit: BoxFit.fill,
                 ),
                 SizedBox(
                   width: 300,

@@ -2,13 +2,11 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:project_c/main.dart';
-import 'favoriet.dart';
-import 'package:project_c/widgets/navbar.dart';
-import 'package:image_picker/image_picker.dart';
-import 'dart:io';
-import 'package:flutter/material.dart';
-import 'package:youtube_player_flutter/youtube_player_flutter.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:project_c/classes/custom_colors.dart';
+import 'package:project_c/views/views.dart';
+import 'package:project_c/widgets/widgets.dart';
+// import 'package:youtube_player_flutter/youtube_player_flutter.dart';
+// import 'package:shared_preferences/shared_preferences.dart';
 
 class detail_pagina extends StatefulWidget {
   const detail_pagina({Key? key}) : super(key: key);
@@ -27,7 +25,7 @@ class _detail_paginaState extends State<detail_pagina> {
       body: CustomScrollView(
 
         physics: const BouncingScrollPhysics(
-            parent: AlwaysScrollableScrollPhysics()),
+        parent: AlwaysScrollableScrollPhysics()),
         slivers: <Widget>[
           SliverAppBar(
             stretch: true,
