@@ -44,9 +44,24 @@ class _galerijState extends State<galerij> {
                     crossAxisCount: 1,
                     mainAxisSpacing: 1,
                       children: List.generate( artdata.size, (index){
+                        String artdataLowResImage = artdata.docs[index]['url'];
+                        try {
+                          artdataLowResImage = artdata.docs[index]['low_res_url'];
+                        } on StateError catch(e) {}
                         return Center(
-                          child: imageholder(artdata.docs[index]['url'],artdata.docs[index]['name'],artdata.docs[index]['description'], artdata.docs[index]['artist']),
+                          child: imageholder(artdataLowResImage ,artdata.docs[index]['name'],artdata.docs[index]['description'], artdata.docs[index]['artist']),
                         );
+                        if(artdata.docs[index].get('low_res_url') != null) {
+                          artdataLowResImage = artdata.docs[index]['low_res_url'];
+                          return Center(
+                            child: imageholder(artdataLowResImage ,artdata.docs[index]['name'],artdata.docs[index]['description'], artdata.docs[index]['artist']),
+                          );
+                        } else {
+                          return Center(
+                            child: imageholder(artdataLowResImage ,artdata.docs[index]['name'],artdata.docs[index]['description'], artdata.docs[index]['artist']),
+                          );
+                        }
+
                       }
                       )
                   );
