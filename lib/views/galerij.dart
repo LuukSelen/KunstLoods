@@ -51,16 +51,6 @@ class _galerijState extends State<galerij> {
                         return Center(
                           child: imageholder(artdataLowResImage ,artdata.docs[index]['name'],artdata.docs[index]['description'], artdata.docs[index]['artist']),
                         );
-                        if(artdata.docs[index].get('low_res_url') != null) {
-                          artdataLowResImage = artdata.docs[index]['low_res_url'];
-                          return Center(
-                            child: imageholder(artdataLowResImage ,artdata.docs[index]['name'],artdata.docs[index]['description'], artdata.docs[index]['artist']),
-                          );
-                        } else {
-                          return Center(
-                            child: imageholder(artdataLowResImage ,artdata.docs[index]['name'],artdata.docs[index]['description'], artdata.docs[index]['artist']),
-                          );
-                        }
 
                       }
                       )
