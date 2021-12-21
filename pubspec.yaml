@@ -54,6 +54,7 @@ dependencies:
   # adds local storage functionality
   shared_preferences: ^2.0.11
 
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

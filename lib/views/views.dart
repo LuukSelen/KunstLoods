@@ -5,3 +5,4 @@ export 'galerij.dart';
 export 'home.dart';
 export 'tour.dart';
 export 'views.dart';
+export 'splashscreen.dart';

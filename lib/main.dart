@@ -1,10 +1,9 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
 import 'package:project_c/views/views.dart';
-import 'package:project_c/widgets/widgets.dart';
 import 'package:project_c/classes/custom_colors.dart';
 import 'package:firebase_core/firebase_core.dart';
-
+import 'dart:async';
 String globaladres = '';
 String globalartworkname = '';
 String globalartworkdesc = '';
@@ -16,14 +15,23 @@ Future<void> main() async {
   await Firebase.initializeApp();
 
   runApp(
-    MaterialApp(
-        title: 'Cavero Loods Tour',
-        theme: ThemeData(
-          primarySwatch:  CustomBlack,
-          scaffoldBackgroundColor: colorCustombg,
-        ),
-      initialRoute: '/home',
+    Main()
+  );
+}
+class Main extends StatelessWidget {
+  const Main({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Cavero Loods Tour',
+      theme: ThemeData(
+        primarySwatch:  CustomBlack,
+        scaffoldBackgroundColor: colorCustombg,
+      ),
+      initialRoute: '/splash',
       routes: {
+        '/splash': (context)=> splashscreen(),
         '/home': (context)=> home(),
         '/favoriet':(context)=> favoriet(),
         '/galerij':(context)=>galerij(),
@@ -31,6 +39,8 @@ Future<void> main() async {
         '/detail_pagina':(context)=>detail_pagina(),
         '/contact':(context)=>contact(),
       },
-    )
-  );
+    );
+  }
 }
+
+
