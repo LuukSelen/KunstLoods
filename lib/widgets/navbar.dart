@@ -14,7 +14,7 @@ class _navbarState extends State<navbar> {
   // final list=['/home','/galerij','/favoriet'];
   final list=['/galerij','/favoriet','/contact'];
   _selectTab(int Route) {
-    if(ModalRoute.of(context)?.settings.name=='/home'){
+    if(ModalRoute.of(context)?.settings.name==null){
       Navigator.pushNamed(context, list[Route]);
     }
     else {
