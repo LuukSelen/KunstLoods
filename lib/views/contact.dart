@@ -5,6 +5,8 @@ import 'package:project_c/widgets/widgets.dart';
 import 'package:project_c/classes/custom_colors.dart';
 import 'package:hexcolor/hexcolor.dart';
 
+import '../widgets/youtube.dart';
+
 class contact extends StatelessWidget {
   const contact({Key? key}) : super(key: key);
 

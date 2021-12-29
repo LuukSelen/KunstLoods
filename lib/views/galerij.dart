@@ -53,7 +53,7 @@ class _galerijState extends State<galerij> {
                         );
 
                       }
-                      )
+                      ),
                   );
                 }
       ),
