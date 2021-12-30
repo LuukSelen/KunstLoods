@@ -49,7 +49,7 @@ class _galerijState extends State<galerij> {
                           artdataLowResImage = artdata.docs[index]['low_res_url'];
                         } on StateError catch(e) {}
                         return Center(
-                          child: imageholder(artdataLowResImage ,artdata.docs[index]['name'],artdata.docs[index]['description'], artdata.docs[index]['artist']),
+                          child: imageholder(artdataLowResImage ,artdata.docs[index]['name'],artdata.docs[index]['description'], artdata.docs[index]['artist'],artdata.docs[index]['youtubeurl']),
                         );
 
                       }

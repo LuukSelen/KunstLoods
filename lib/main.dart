@@ -8,6 +8,7 @@ String globaladres = '';
 String globalartworkname = '';
 String globalartworkdesc = '';
 String globalartist = '';
+String globalurl='';
 List<String> globalfavlist = [];
 
 Future<void> main() async {

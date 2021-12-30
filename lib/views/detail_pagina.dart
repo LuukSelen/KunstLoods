@@ -5,6 +5,7 @@ import 'package:project_c/main.dart';
 import 'package:project_c/classes/custom_colors.dart';
 import 'package:project_c/views/views.dart';
 import 'package:project_c/widgets/widgets.dart';
+import 'package:project_c/widgets/youtube.dart';
 // import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 // import 'package:shared_preferences/shared_preferences.dart';
 
@@ -70,24 +71,6 @@ class _detail_paginaState extends State<detail_pagina> {
           SliverList(
             delegate: SliverChildListDelegate(
                <Widget>[
-                  ListTile(
-                    leading: Icon(Icons.info, color: HexColor('#FFFFFF'),),
-                    title: Text('Informatie', style: TextStyle(fontWeight: FontWeight.bold),),
-                    subtitle: Text(globalartworkdesc),
-                    textColor: HexColor('#FFFFFF'),
-                  ),
-                  ListTile(
-                    leading: Icon(Icons.brush, color: HexColor('#FFFFFF'),),
-                    title: Text('Artiest', style: TextStyle(fontWeight: FontWeight.bold),),
-                    subtitle: Text(globalartist),
-                    textColor: HexColor('#FFFFFF'),
-                  ),
-                 ListTile(
-                    leading: Icon(Icons.date_range, color: HexColor('#FFFFFF'),),
-                    title: Text('Jaar', style: TextStyle(fontWeight: FontWeight.bold),),
-                    subtitle: Text('N/A'),
-                    textColor: HexColor('#FFFFFF'),
-               ),
                  IconButton(
                    icon: Icon(_isFavorited ? Icons.favorite : Icons.favorite_border),
                    iconSize: 30,
@@ -109,7 +92,27 @@ class _detail_paginaState extends State<detail_pagina> {
 
                      });
                    },
-                 ), // ListTiles++
+                 ),
+                  ListTile(
+                    leading: Icon(Icons.info, color: HexColor('#FFFFFF'),),
+                    title: Text('Informatie', style: TextStyle(fontWeight: FontWeight.bold),),
+                    subtitle: Text(globalartworkdesc),
+                    textColor: HexColor('#FFFFFF'),
+                  ),
+                  ListTile(
+                    leading: Icon(Icons.brush, color: HexColor('#FFFFFF'),),
+                    title: Text('Artiest', style: TextStyle(fontWeight: FontWeight.bold),),
+                    subtitle: Text(globalartist),
+                    textColor: HexColor('#FFFFFF'),
+                  ),
+                 ListTile(
+                    leading: Icon(Icons.date_range, color: HexColor('#FFFFFF'),),
+                    title: Text('Jaar', style: TextStyle(fontWeight: FontWeight.bold),),
+                    subtitle: Text('N/A'),
+                    textColor: HexColor('#FFFFFF'),
+               ),
+
+                 youtube(globalurl)// ListTiles++
               ],
             ),
           ),
