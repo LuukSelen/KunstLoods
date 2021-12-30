@@ -16,6 +16,7 @@ class _youtubeState extends State<youtube> {
   }
   @override
   Widget build(BuildContext context) {
+    if(adres!=''){
     return YoutubePlayer(
       controller: YoutubePlayerController(
       initialVideoId: adres, //Add videoID.
@@ -27,6 +28,9 @@ class _youtubeState extends State<youtube> {
       ),
     ),
 
-    );
+    );}
+    else{
+      return SizedBox.shrink();
+    }
   }
 }

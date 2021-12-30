@@ -7,15 +7,17 @@ class imageholder extends StatefulWidget {
   var artworkname;
   var artworkdesc;
   var artist;
+  var url;
 
-  imageholder(String s, String b , String c, String d){
+  imageholder(String s, String b , String c, String d, String e){
     this.adres=s;
     this.artworkname=b;
     this.artworkdesc=c;
     this.artist=d;
+    this.url=e;
   }
   @override
-  _imageholderState createState() => _imageholderState(adres,artworkname,artworkdesc,artist);
+  _imageholderState createState() => _imageholderState(adres,artworkname,artworkdesc,artist,url);
 }
 
 class _imageholderState extends State<imageholder> {
@@ -23,19 +25,22 @@ class _imageholderState extends State<imageholder> {
   var artworkname;
   var artworkdesc;
   var artist;
+  var url;
 
-  _imageholderState(var adres,var artworkname, var artworkdesc, var artist){
+  _imageholderState(var adres,var artworkname, var artworkdesc, var artist, var url){
     this.adres=adres;
     this.artworkname=artworkname;
     this.artworkdesc=artworkdesc;
     this.artist=artist;
+    this.url= url;
   }
   _selectTab() {
     globaladres = adres;
     globalartworkname = artworkname;
     globalartworkdesc = artworkdesc;
     globalartist = artist;
-    Navigator.pushNamed(context, '/detail_pagina', arguments: _imageholderState(adres, artworkname, artworkdesc, artist));
+    globalurl=url;
+    Navigator.pushNamed(context, '/detail_pagina', arguments: _imageholderState(adres, artworkname, artworkdesc, artist, url));
 
   }
   @override

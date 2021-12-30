@@ -56,7 +56,8 @@ class favoriet extends StatelessWidget {
                         child: imageholder(
                             artdataLowResImage, artdata.docs[index]['name'],
                             artdata.docs[index]['description'],
-                            artdata.docs[index]['artist']),
+                            artdata.docs[index]['artist'],
+                            artdata.docs[index]['youtubeurl']),
                       );
                     }
                     )
