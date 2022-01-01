@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
 import 'package:project_c/main.dart';
+import 'package:project_c/classes/load.dart';
 
 class imageholder extends StatefulWidget {
   var adres;
@@ -16,6 +17,7 @@ class imageholder extends StatefulWidget {
     this.artist=d;
     this.url=e;
   }
+
   @override
   _imageholderState createState() => _imageholderState(adres,artworkname,artworkdesc,artist,url);
 }
@@ -43,7 +45,9 @@ class _imageholderState extends State<imageholder> {
     Navigator.pushNamed(context, '/detail_pagina', arguments: _imageholderState(adres, artworkname, artworkdesc, artist, url));
 
   }
+
   @override
+
   Widget build(BuildContext context) {
     return
         Center(

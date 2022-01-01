@@ -50,9 +50,13 @@ dependencies:
 
   # adds youtube player functionality
   youtube_player_flutter: ^8.0.0
-
+  #storage
+  get_storage: 2.0.3
   # adds local storage functionality
   shared_preferences: ^2.0.11
+
+
+
 
 
 dev_dependencies:
