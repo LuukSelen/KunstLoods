@@ -5,6 +5,7 @@ import 'package:project_c/widgets/widgets.dart';
 import 'package:project_c/main.dart';
 import 'package:project_c/classes/custom_colors.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:project_c/classes/load.dart';
 
 class favoriet extends StatelessWidget {
 
@@ -13,6 +14,7 @@ class favoriet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Stream<QuerySnapshot> databaseart;
+
     if (globalfavlist.length>0){
       databaseart = FirebaseFirestore.instance.collection('loods_art')
           .where('name', whereIn: globalfavlist)
@@ -40,7 +42,7 @@ class favoriet extends StatelessWidget {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return Text('Aan het laden');
               }
-              if (snapshot.hasData) {
+              if (snapshot.hasData & (globalfavlist.length>1)) {
                 final artdata = snapshot.requireData;
 
                 return GridView.count(

@@ -6,6 +6,7 @@ import 'package:project_c/classes/custom_colors.dart';
 import 'package:project_c/views/views.dart';
 import 'package:project_c/widgets/widgets.dart';
 import 'package:project_c/widgets/youtube.dart';
+import 'package:project_c/classes/load.dart';
 // import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 // import 'package:shared_preferences/shared_preferences.dart';
 
@@ -82,11 +83,13 @@ class _detail_paginaState extends State<detail_pagina> {
                          const snackBar = SnackBar(duration: const Duration(milliseconds: 600), content: Text('Favoriet opgeslagen'));
                          ScaffoldMessenger.of(context).showSnackBar(snackBar);
                          globalfavlist.add(globalartworkname);
+                         savelist(globalfavlist);
                          print(globalfavlist);
                        } else {
                          const snackBar = SnackBar(duration: const Duration(milliseconds: 600), content: Text('Favoriet verwijderd'));
                          ScaffoldMessenger.of(context).showSnackBar(snackBar);
                          globalfavlist.removeWhere((item) => item == globalartworkname);
+                         savelist(globalfavlist);
                          print(globalfavlist);
                        }
 
