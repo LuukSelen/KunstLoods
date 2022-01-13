@@ -35,19 +35,19 @@ class contact extends StatelessWidget {
               ListTile(
                 leading: Icon(Icons.location_on, color: HexColor('#FFFFFF'),),
                 title: Text('Adres', style: TextStyle(fontWeight: FontWeight.bold),),
-                subtitle: Text('TestStraat 666\n1234AH TestStad'),
+                subtitle: Text('Treubstraat 31\n2288 EH Rijswijk'),
                 textColor: HexColor('#FFFFFF'),
               ),
               ListTile(
                 leading: Icon(Icons.local_phone, color: HexColor('#FFFFFF'),),
                 title: Text('Telefoonnummer', style: TextStyle(fontWeight: FontWeight.bold),),
-                subtitle: Text('06-12345678'),
+                subtitle: Text('+31(0)6 236 79 220'),
                 textColor: HexColor('#FFFFFF'),
               ),
               ListTile(
                 leading: Icon(Icons.mail_outline, color: HexColor('#FFFFFF'),),
                 title: Text('Mail', style: TextStyle(fontWeight: FontWeight.bold),),
-                subtitle: Text('test@test.nl'),
+                subtitle: Text('info@dekennisloods.nl'),
                 textColor: HexColor('#FFFFFF'),
               ),
 
