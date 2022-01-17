@@ -4,6 +4,7 @@ import 'package:project_c/views/views.dart';
 import 'package:project_c/widgets/widgets.dart';
 import 'package:project_c/classes/custom_colors.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../widgets/youtube.dart';
 
@@ -48,6 +49,13 @@ class contact extends StatelessWidget {
                 leading: Icon(Icons.mail_outline, color: HexColor('#FFFFFF'),),
                 title: Text('Mail', style: TextStyle(fontWeight: FontWeight.bold),),
                 subtitle: Text('info@dekennisloods.nl'),
+                textColor: HexColor('#FFFFFF'),
+              ),
+              ListTile(
+                leading: Icon(Icons.public, color: HexColor('#FFFFFF'),),
+                title: Text('Website', style: TextStyle(fontWeight: FontWeight.bold),),
+                subtitle: Text('dekennisloods.nl'),
+                onTap: () => launch('https://dekennisloods.nl/'),
                 textColor: HexColor('#FFFFFF'),
               ),
 
