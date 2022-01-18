@@ -40,7 +40,30 @@ class favoriet extends StatelessWidget {
                 return Text('Helaas is er iets fout gegaan');
               }
               if (snapshot.connectionState == ConnectionState.waiting) {
-                return Text('Aan het laden');
+                return Container(
+                  child:Center(
+
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children:  <Widget>[
+                        Image(
+                          image: AssetImage('assets/logo.png'),
+                        ),
+                        SizedBox(
+                          width: 300,
+                          child: Text(
+                            'Aan het laden...',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Colors.grey,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                );
               }
               if (snapshot.hasData & (globalfavlist.length>1)) {
                 final artdata = snapshot.requireData;

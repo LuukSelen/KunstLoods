@@ -51,7 +51,8 @@ class _homeState extends State<home> {
           globalartist = documentSnapshot.get('artist');
           Navigator.pushNamed(context, '/detail_pagina', arguments: _imageholderState(globaladres, globalartworkname, globalartworkdesc, globalartist));
         } else {
-          print('errrrorrrr, file document does not exist');
+          const snackBar = SnackBar(duration: const Duration(milliseconds: 1500), content: Text('QR code komt niet overeen.'));
+          ScaffoldMessenger.of(context).showSnackBar(snackBar);
         }
       });
 

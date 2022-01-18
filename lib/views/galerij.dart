@@ -1,8 +1,8 @@
 // ignore_for_file: prefer_const_constructors
-import 'dart:math';
+// import 'dart:math';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:project_c/views/views.dart';
+// import 'package:project_c/views/views.dart';
 import 'package:project_c/widgets/widgets.dart';
 import 'package:project_c/classes/custom_colors.dart';
 
@@ -36,7 +36,30 @@ class _galerijState extends State<galerij> {
                     return Text('Helaas is er iets fout gegaan');
                   }
                   if (snapshot.connectionState== ConnectionState.waiting){
-                    return Text('Aan het laden');
+                    return Container(
+                      child:Center(
+
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children:  <Widget>[
+                            Image(
+                              image: AssetImage('assets/logo.png'),
+                            ),
+                            SizedBox(
+                              width: 300,
+                              child: Text(
+                                'Aan het laden...',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    );
                   }
                   final artdata = snapshot.requireData;
                   return GridView.count(
